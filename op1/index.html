@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cumpleaños de José Salas</title>
+    <style>
+        :root {
+            --white: #fffdf8;
+            --paper: #ffffff;
+            --cream: #fff7e4;
+            --gold: #c79a3a;
+            --gold-soft: #f2d999;
+            --blue: #123a68;
+            --blue2: #1c5c98;
+            --muted: #6c7485;
+            --shadow: 0 25px 70px rgba(18, 58, 104, .16);
+            --radius: 30px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: "Segoe UI", system-ui, sans-serif;
+            color: #253047;
+            background: radial-gradient(circle at top left, rgba(199, 154, 58, .20), transparent 30%),
+            radial-gradient(circle at 90% 15%, rgba(18, 58, 104, .14), transparent 28%),
+            linear-gradient(180deg, #fffdf8, #ffffff);
+            overflow-x: hidden;
+        }
+
+        .petals, .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .petals span, .stars span {
+            position: absolute;
+            display: block;
+            animation: fall linear infinite;
+            opacity: .75;
+        }
+
+        .petals span {
+            width: 12px;
+            height: 18px;
+            background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+            border-radius: 90% 10% 90% 10%;
+        }
+
+        .stars span {
+            color: rgba(18, 58, 104, .20);
+            font-size: 22px;
+            animation: twinkle 4s ease-in-out infinite;
+        }
+
+        .petals span:nth-child(1) {
+            left: 8%;
+            animation-duration: 13s;
+            animation-delay: -2s
+        }
+
+        .petals span:nth-child(2) {
+            left: 18%;
+            animation-duration: 16s;
+            animation-delay: -8s
+        }
+
+        .petals span:nth-child(3) {
+            left: 31%;
+            animation-duration: 12s;
+            animation-delay: -5s
+        }
+
+        .petals span:nth-child(4) {
+            left: 46%;
+            animation-duration: 18s;
+            animation-delay: -10s
+        }
+
+        .petals span:nth-child(5) {
+            left: 62%;
+            animation-duration: 14s;
+            animation-delay: -1s
+        }
+
+        .petals span:nth-child(6) {
+            left: 74%;
+            animation-duration: 17s;
+            animation-delay: -6s
+        }
+
+        .petals span:nth-child(7) {
+            left: 88%;
+            animation-duration: 15s;
+            animation-delay: -3s
+        }
+
+        .stars span:nth-child(1) {
+            left: 12%;
+            top: 16%
+        }
+
+        .stars span:nth-child(2) {
+            left: 80%;
+            top: 12%;
+            animation-delay: 1s
+        }
+
+        .stars span:nth-child(3) {
+            left: 8%;
+            top: 75%;
+            animation-delay: 2s
+        }
+
+        .stars span:nth-child(4) {
+            left: 92%;
+            top: 64%;
+            animation-delay: 3s
+        }
+
+        .stars span:nth-child(5) {
+            left: 48%;
+            top: 8%;
+            animation-delay: 1.5s
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-15vh) rotate(0deg)
+            }
+            100% {
+                transform: translateY(115vh) rotate(360deg)
+            }
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                transform: scale(.8);
+                opacity: .18
+            }
+            50% {
+                transform: scale(1.25);
+                opacity: .55
+            }
+        }
+
+        .nav {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            background: rgba(255, 255, 255, .78);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(199, 154, 58, .25);
+            border-radius: 999px;
+            padding: 10px;
+            box-shadow: 0 12px 35px rgba(18, 58, 104, .10);
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--blue);
+            font-weight: 700;
+            padding: 10px 15px;
+            border-radius: 999px;
+            font-size: .9rem;
+            transition: .25s ease;
+        }
+
+        .nav a:hover {
+            background: var(--blue);
+            color: white;
+        }
+
+        header {
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+            display: grid;
+            place-items: center;
+            padding: 95px 18px 40px;
+        }
+
+        .hero {
+            width: min(1120px, 100%);
+            display: grid;
+            grid-template-columns:1fr 1fr;
+            gap: 34px;
+            align-items: center;
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .80);
+            border: 1px solid rgba(199, 154, 58, .22);
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            backdrop-filter: blur(18px);
+        }
+
+        .hero-copy {
+            padding: 54px;
+            animation: slideUp .9s ease both;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #edf4ff;
+            color: var(--blue);
+            border-radius: 999px;
+            padding: 11px 17px;
+            font-size: .85rem;
+            letter-spacing: .5px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .eyebrow::before {
+            content: "✦";
+            color: var(--gold)
+        }
+
+        h1 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(3.2rem, 7vw, 7rem);
+            line-height: .90;
+            color: var(--blue);
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .gold {
+            color: var(--gold)
+        }
+
+        .lead {
+            color: var(--muted);
+            font-size: 1.22rem;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .date-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 26px;
+        }
+
+        .pill {
+            background: #fff;
+            border: 1px solid rgba(199, 154, 58, .30);
+            color: var(--blue);
+            padding: 13px 17px;
+            border-radius: 17px;
+            font-weight: 800;
+            box-shadow: 0 12px 28px rgba(199, 154, 58, .10);
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--blue), var(--blue2));
+            color: white;
+            border-radius: 999px;
+            padding: 14px 20px;
+            font-weight: 900;
+            box-shadow: 0 14px 28px rgba(18, 58, 104, .20);
+            transition: .25s ease;
+        }
+
+        .btn.secondary {
+            background: #fff;
+            color: var(--blue);
+            border: 1px solid rgba(199, 154, 58, .35);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px) scale(1.02)
+        }
+
+        .photo-stage {
+            position: relative;
+            min-height: 650px;
+            animation: fadeIn 1s .2s ease both;
+        }
+
+        .main-photo {
+            position: absolute;
+            inset: 24px;
+            border-radius: 32px;
+            background: url("jose_full.jpeg") center/cover;
+            border: 10px solid white;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            animation: floatPhoto 5s ease-in-out infinite;
+        }
+
+        .main-photo::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 35%, rgba(18, 58, 104, .50));
+        }
+
+        .photo-caption {
+            position: absolute;
+            left: 56px;
+            right: 56px;
+            bottom: 55px;
+            z-index: 3;
+            background: rgba(255, 255, 255, .82);
+            border-radius: 22px;
+            padding: 18px;
+            color: var(--blue);
+            font-weight: 900;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            border: 7px solid white;
+            box-shadow: 0 18px 38px rgba(18, 58, 104, .18);
+            background-size: cover;
+            background-position: center;
+            animation: orbit 6s ease-in-out infinite;
+        }
+
+        .b1 {
+            width: 150px;
+            height: 150px;
+            right: -6px;
+            top: 35px;
+            background-image: url("jose_side.jpeg")
+        }
+
+        .b2 {
+            width: 130px;
+            height: 130px;
+            left: -8px;
+            bottom: 70px;
+            background-image: url("familia.jpeg");
+            animation-delay: 1s
+        }
+
+        .b3 {
+            width: 110px;
+            height: 110px;
+            right: 25px;
+            bottom: 25px;
+            background-image: url("jose_bottle.jpeg");
+            animation-delay: 2s
+        }
+
+        main {
+            position: relative;
+            z-index: 1;
+            padding: 20px 18px 70px;
+        }
+
+        section {
+            width: min(1120px, 100%);
+            margin: 0 auto 32px;
+        }
+
+        .section-title {
+            font-family: Georgia, "Times New Roman", serif;
+            color: var(--blue);
+            font-size: clamp(2.3rem, 4vw, 4rem);
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--muted);
+            line-height: 1.8;
+            max-width: 760px;
+            margin: 0 auto 28px;
+            font-size: 1.12rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns:repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .info {
+            padding: 30px;
+            min-height: 230px;
+            transition: .25s ease;
+        }
+
+        .info:hover {
+            transform: translateY(-10px);
+            border-color: rgba(199, 154, 58, .55);
+        }
+
+        .icon {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #edf4ff, #fff);
+            color: var(--gold);
+            border-radius: 18px;
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+        }
+
+        .info h3 {
+            color: var(--blue);
+            font-size: 1.28rem;
+            margin-bottom: 10px;
+        }
+
+        .info p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .gallery {
+            padding: 42px;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            gap: 20px;
+            animation: scrollGallery 30s linear infinite;
+            width: max-content;
+            padding: 15px 0;
+        }
+
+        .slider:hover {
+            animation-play-state: paused
+        }
+
+        .shot {
+            width: 280px;
+            height: 390px;
+            border-radius: 28px;
+            background-size: cover;
+            background-position: center;
+            border: 8px solid white;
+            box-shadow: 0 16px 38px rgba(18, 58, 104, .16);
+            transition: .3s ease;
+        }
+
+        .shot:hover {
+            transform: scale(1.05) rotate(-1deg);
+        }
+
+        .s1 {
+            background-image: url("jose_full.jpeg")
+        }
+
+        .s2 {
+            background-image: url("jose_bottle.jpeg")
+        }
+
+        .s3 {
+            background-image: url("jose_hijo.jpeg")
+        }
+
+        .s4 {
+            background-image: url("familia.jpeg")
+        }
+
+        .s5 {
+            background-image: url("pareja.jpeg")
+        }
+
+        /*.s6{background-image:url("capilla.jpeg")}*/
+        .s6 {
+            background-image: url("jose_side.jpeg")
+        }
+
+        @keyframes scrollGallery {
+            from {
+                transform: translateX(0)
+            }
+            to {
+                transform: translateX(-50%)
+            }
+        }
+
+        .message {
+            padding: 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message::before {
+            content: "“";
+            position: absolute;
+            top: -30px;
+            left: 40px;
+            font-family: Georgia, serif;
+            font-size: 180px;
+            color: rgba(199, 154, 58, .16);
+        }
+
+        .message p {
+            color: var(--muted);
+            font-size: 1.2rem;
+            line-height: 1.9;
+            max-width: 820px;
+            margin: auto;
+        }
+
+        .count-card {
+            padding: 42px;
+            background: linear-gradient(135deg, rgba(18, 58, 104, .98), rgba(28, 92, 152, .92));
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .count-card::after {
+            content: "✦ ✧ ✦ ✧ ✦ ✧ ✦";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 18px;
+            color: rgba(242, 217, 153, .42);
+            font-size: 2rem;
+            letter-spacing: 18px;
+            animation: glow 2.4s ease-in-out infinite;
+        }
+
+        .count-card h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            margin-bottom: 12px;
+        }
+
+        .count-card p {
+            color: #edf5ff;
+            font-size: 1.12rem;
+            line-height: 1.7;
+            margin-bottom: 22px;
+        }
+
+        .mini-count {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 16px;
+            margin-bottom: 25px;
+        }
+
+        .mini-count div {
+            min-width: 120px;
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .22);
+            border-radius: 22px;
+            padding: 18px;
+            backdrop-filter: blur(8px);
+        }
+
+        .mini-count strong {
+            display: block;
+            color: var(--gold-soft);
+            font-size: 2rem;
+        }
+
+        .closing {
+            padding: 46px;
+            text-align: center;
+        }
+
+        .closing h2 {
+            font-family: Georgia, serif;
+            color: var(--blue);
+            font-size: clamp(2.3rem, 4vw, 4rem);
+            margin-bottom: 12px;
+        }
+
+        .closing p {
+            color: var(--muted);
+            line-height: 1.85;
+            font-size: 1.15rem;
+            max-width: 760px;
+            margin: 0 auto 24px;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 25px 18px 48px;
+            color: var(--muted);
+        }
+
+        .heart {
+            color: var(--gold);
+            display: inline-block;
+            animation: beat 1.4s infinite;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(35px)
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(.96)
+            }
+            to {
+                opacity: 1;
+                transform: scale(1)
+            }
+        }
+
+        @keyframes floatPhoto {
+            0%, 100% {
+                transform: translateY(0)
+            }
+            50% {
+                transform: translateY(-14px)
+            }
+        }
+
+        @keyframes orbit {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg)
+            }
+            50% {
+                transform: translateY(12px) rotate(3deg)
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                opacity: .35
+            }
+            50% {
+                opacity: .9
+            }
+        }
+
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1)
+            }
+            50% {
+                transform: scale(1.2)
+            }
+        }
+
+        @media (max-width: 900px) {
+            .nav {
+                display: none
+            }
+
+            .hero {
+                grid-template-columns:1fr
+            }
+
+            .hero-copy {
+                padding: 34px
+            }
+
+            .photo-stage {
+                min-height: 540px
+            }
+
+            .info-grid {
+                grid-template-columns:1fr
+            }
+
+            .gallery {
+                padding: 28px
+            }
+
+            .shot {
+                width: 230px;
+                height: 330px
+            }
+        }
+
+        #musicBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #123a68;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 999px;
+            cursor: pointer;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+<audio id="bgMusic" autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+</audio>
+<div class="petals">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+<div class="stars">
+    <span>✦</span><span>✧</span><span>✦</span><span>✧</span><span>✦</span>
+</div>
+
+<nav class="nav">
+    <a href="#inicio">Inicio</a>
+    <a href="#detalles">Detalles</a>
+    <a href="#fotos">Fotos</a>
+    <a href="#confirmar">Confirmar</a>
+</nav>
+
+<header id="inicio">
+    <div class="hero">
+        <div class="hero-copy glass">
+            <span class="eyebrow">Invitación especial</span>
+            <h1>José <span class="gold">Salas</span></h1>
+            <p class="lead">
+                Con inmensa alegría y mucho cariño, queremos celebrar la vida de José.
+                Será un día para agradecer a Dios, compartir en familia, sonreír y guardar
+                recuerdos que abracen el corazón.
+            </p>
+
+            <div class="date-row">
+                <span class="pill">📅 12 de julio de 2026</span>
+                <span class="pill">🤍 Celebración familiar</span>
+            </div>
+
+            <div class="buttons">
+                <a class="btn" href="#detalles">Ver detalles</a>
+                <a class="btn secondary" href="#fotos">Ver fotos</a>
+            </div>
+        </div>
+
+        <div class="photo-stage">
+            <div class="main-photo"></div>
+            <div class="bubble b1"></div>
+            <div class="bubble b2"></div>
+            <div class="bubble b3"></div>
+
+        </div>
+        <div class="photo-caption">¡Estás invitado a celebrar con nosotros!</div>
+    </div>
+</header>
+
+<main>
+    <section class="message glass">
+        <h2 class="section-title">Un día lleno de cariño</h2>
+        <p>
+            José es una persona muy especial para su familia y para quienes lo estiman.
+            Por eso, queremos reunirnos para celebrar su cumpleaños con gratitud, alegría
+            y mucho afecto. Tu presencia hará que este día sea aún más bonito.
+        </p>
+    </section>
+
+    <section id="detalles">
+        <h2 class="section-title">Detalles de la celebración</h2>
+        <p class="section-sub">
+            Guarda esta fecha especial y acompáñanos en la misa y la recepción.
+        </p>
+
+        <div class="info-grid">
+            <div class="info glass">
+                <div class="icon">⛪</div>
+                <h3>Misa de acción de gracias</h3>
+                <p><strong>Hora:</strong> 12:00 m.</p>
+                <p><strong>Lugar:</strong> Capilla de Llicua, Huánuco.</p>
+            </div>
+
+            <div class="info glass">
+                <div class="icon">🎂</div>
+                <h3>Recepción</h3>
+                <p><strong>Lugar:</strong> La Finca.</p>
+                <p>Urb. Santa María del Huallaga Nro. 150, Huánuco, Perú.</p>
+            </div>
+
+            <div class="info glass">
+                <div class="icon">✨</div>
+                <h3>Con mucho afecto</h3>
+                <p>Una celebración jovial, familiar y elegante, en tonos blanco, dorado y azul.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="fotos" class="gallery glass">
+        <h2 class="section-title">Recuerdos de José</h2>
+        <p class="section-sub">
+            Una pequeña galería con momentos especiales. Pasa el cursor sobre las fotos para pausar la animación.
+        </p>
+        <div class="slider">
+            <div class="shot s1"></div>
+            <div class="shot s2"></div>
+            <div class="shot s3"></div>
+            <div class="shot s4"></div>
+            <div class="shot s5"></div>
+            <div class="shot s6"></div>
+            <div class="shot s7"></div>
+            <div class="shot s1"></div>
+            <div class="shot s2"></div>
+            <div class="shot s3"></div>
+            <div class="shot s4"></div>
+            <div class="shot s5"></div>
+            <div class="shot s6"></div>
+            <div class="shot s7"></div>
+        </div>
+    </section>
+
+    <section class="count-card glass">
+        <h2>Falta poco para celebrar</h2>
+        <p>
+            Domingo 12 de julio de 2026. Será un día de gratitud, unión familiar y alegría.
+        </p>
+        <div class="mini-count">
+            <div><strong>12</strong>Julio</div>
+            <div><strong>12:00</strong>Misa</div>
+            <div><strong>La</strong>Finca</div>
+        </div>
+    </section>
+
+    <section id="confirmar" class="closing glass">
+        <h2>Te esperamos con alegría</h2>
+        <p>
+            Gracias por ser parte de este momento especial. Ven con una sonrisa y con el corazón
+            dispuesto a celebrar la vida de José.
+        </p>
+        <a class="btn" target="_blank"
+           href="https://wa.me/?text=Confirmo%20mi%20asistencia%20al%20cumplea%C3%B1os%20de%20Jos%C3%A9%20Salas%20el%2012%20de%20julio%20de%202026.">
+            Confirmar asistencia por WhatsApp
+        </a>
+    </section>
+</main>
+
+<footer>
+    Hecho con <span class="heart">♥</span> para José Salas
+</footer>
+<script>
+    document.addEventListener("click", function () {
+        const music = document.getElementById("bgMusic");
+
+        music.volume = 0; // inicia en silencio
+        music.play();
+
+        let volume = 0;
+        const fade = setInterval(() => {
+            if (volume < 0.95) {
+                volume += 0.02; // velocidad de subida
+                music.volume = volume;
+            } else {
+                music.volume = 1;
+                clearInterval(fade);
+            }
+        }, 200); // cada 200ms aumenta
+    }, {once: true});
+</script>
+</body>
+</html>
